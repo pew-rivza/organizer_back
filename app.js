@@ -6,7 +6,6 @@ const app = express();
 app.use(express.json({ limit: "200mb", extended: true }));
 
 app.use('/uploads/clothes', express.static(__dirname + '/uploads/clothes'));
-
 const PORT = config.get("port");
 
 app.use("/api/balancewheel/area", require("./routes/balanceWheel/BW_area.routes"));
