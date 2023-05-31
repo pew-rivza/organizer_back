@@ -43,7 +43,7 @@ async function start() {
     await db.sequelize.authenticate();
     await db.sequelize.sync();
     // await db.CL_CheckList.sync({force: true});
-    app.listen(PORT);
+    app.listen(PORT, "localhost");
   } catch (e) {
     console.log("error in server or db start:", e.message);
   }
