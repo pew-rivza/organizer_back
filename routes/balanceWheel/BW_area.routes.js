@@ -13,14 +13,3 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
-
-// TODO: поставить линтер и преттиер
-// TODO: перевести на ts
-// TODO: перевести с реквайров на импорты
-// TODO: добавить конфиг
-// TODO: выложить на гитхаб
-// TODO: подготовить к деплою
-// TODO: задеплоить
-// TODO: вынести апи в константы
-// TODO: внедрить concurrently
-// TODO: отрефакторить package.json

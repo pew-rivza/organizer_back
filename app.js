@@ -43,6 +43,7 @@ async function start() {
     await db.sequelize.authenticate();
     await db.sequelize.sync();
     // await db.CL_CheckList.sync({force: true});
+    // db.sequelize.sync({ force: false, alter: true })
     app.listen(PORT, "localhost");
   } catch (e) {
     console.log("error in server or db start:", e.message);
@@ -54,6 +55,3 @@ start()
     console.log("Database connection has been established successfully");
     console.log(`And app is started on ${PORT} port!`);
   });
-
-// TODO: переписать бэк на клишку с миграциями + переписать на тс
-// TODO: поставить линтер и преттиер в проект + гит
