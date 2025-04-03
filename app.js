@@ -1,15 +1,13 @@
-import db from "./models";
-import express from "express";
-import config from "config";
-import path from "path";
-import {Error} from "sequelize";
+const express = require("express");
+const config = require("config");
+const path = require("path");
+const db = require("./models");
 
 const app = express();
-const PORT: string = config.get("port");
-
-app.use(express.json({ limit: "200mb" }));
+app.use(express.json({ limit: "200mb", extended: true }));
 
 app.use('/uploads/clothes', express.static(__dirname + '/uploads/clothes'));
+const PORT = config.get("port");
 
 app.use("/api/balancewheel/area", require("./routes/balanceWheel/BW_area.routes"));
 app.use("/api/balancewheel/wheel", require("./routes/balanceWheel/BW_wheel.routes"));
@@ -46,15 +44,14 @@ async function start() {
     await db.sequelize.sync();
     // await db.CL_CheckList.sync({force: true});
     // db.sequelize.sync({ force: false, alter: true })
-    app.listen(PORT, () => {
-      console.log(`App is started on ${PORT} port!`);
-    });
+    app.listen(PORT, "localhost");
   } catch (e) {
-    console.log("error in server or db start:", (e as Error).message);
+    console.log("error in server or db start:", e.message);
   }
 }
 
 start()
   .then(() => {
-    console.log("Project started! 💃");
+    console.log("Database connection has been established successfully");
+    console.log(`And app is started on ${PORT} port!`);
   });
