@@ -56,5 +56,5 @@ async function start() {
 
 start()
   .then(() => {
-    console.log("Project started! 💃");
+    console.log("Project started! 💃 rivza deploy test");
   });
